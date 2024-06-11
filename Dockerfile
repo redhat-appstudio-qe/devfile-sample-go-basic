@@ -1,4 +1,5 @@
-FROM registry.access.redhat.com/ubi9/go-toolset:1.19.13-4.1697647145 As builder
+FROM registry.access.redhat.com/ubi9/go-toolset:latest
+WORKDIR /opt/app-root/src
 COPY . .
 RUN  git config --global --add safe.directory /opt/app-root/src
 RUN  go mod download
@@ -18,5 +19,5 @@ LABEL name="terraform-provider-rhcs" release="2.1" url="https://github.com/jinqi
 LABEL vendor="Red Hat, Inc."
 LABEL version="2.1"
 
-COPY --from=builder /opt/app-root/src/releases /releases
+COPY /opt/app-root/src/releases /releases
 CMD [ "./main" ]
