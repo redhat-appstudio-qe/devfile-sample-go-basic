@@ -483,7 +483,8 @@ spec:
       optional: true
     - name: netrc
       optional: true
-  taskRunTemplate: {}
+  taskRunTemplate:
+    serviceAccountName: build-pipeline-e2e-rel-to-github-comp
   workspaces:
   - name: workspace
     volumeClaimTemplate:
